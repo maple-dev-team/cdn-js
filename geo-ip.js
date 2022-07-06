@@ -1,5 +1,5 @@
 if (self.fetch) {
-  fetch("https://13c5-187-44-162-234.sa.ngrok.io/api/get-store-url", {
+  fetch("https://6477-187-44-162-234.sa.ngrok.io/api/get-store-url", {
     mode: "cors",
     headers: {
       "Access-Control-Allow-Origin": "*",
