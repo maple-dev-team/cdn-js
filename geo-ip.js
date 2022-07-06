@@ -1,5 +1,5 @@
 if (self.fetch) {
-  fetch("http://127.0.0.1:35163/api/get-store-url")
+  fetch("https://13c5-187-44-162-234.sa.ngrok.io/api/get-store-url")
     .then((resp) => resp.json())
     .then(function (data) {
       console.log("data.url: ", data.url);
