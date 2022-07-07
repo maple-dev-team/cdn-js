@@ -1,5 +1,5 @@
 if (self.fetch) {
-  fetch("https://6477-187-44-162-234.sa.ngrok.io/api/get-store-url", {
+  fetch("https://geo-ip.appforge.ca/api/get-store-url", {
     mode: "cors",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -7,8 +7,7 @@ if (self.fetch) {
   })
     .then((resp) => resp.json())
     .then(function (data) {
-      console.log("data.url: ", data.url);
-      if (window.location.href !== data.url) {
+      if (!window.location.href.includes(data.url)) {
         window.location.href = data.url;
       }
     })
