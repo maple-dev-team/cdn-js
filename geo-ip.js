@@ -8,7 +8,7 @@ if (self.fetch) {
     .then((resp) => resp.json())
     .then(function (data) {
       if (!window.location.href.includes(data.url)) {
-        window.location.href = data.url;
+        window.location.href = "https://" + data.url;
       }
     })
     .catch(function (error) {
