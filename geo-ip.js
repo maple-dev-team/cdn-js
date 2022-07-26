@@ -7,7 +7,12 @@ if (self.fetch) {
   })
     .then((resp) => resp.json())
     .then(function (data) {
-      if (!window.location.href.includes(data.url)) {
+      const isPreview = window.location.href.includes("shopifypreview");
+      const isTheRightOne = window.location.href.includes(data.url);
+      const isAdmin = window.location.href.includes("/admin");
+      const isRootUrl = window.location.href.includes("myshopify.com");
+
+      if (!isPreview && !isAdmin && !isRootUrl && !isTheRightOne) {
         window.location.href = "https://" + data.url;
       }
     })
