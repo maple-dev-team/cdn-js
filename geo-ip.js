@@ -4,12 +4,7 @@ if (self.fetch) {
   const isPreview = window.location.href.includes("shopifypreview");
 
   if (!isPreview && !isAdmin && !isRootUrl) {
-    fetch("https://ipapi.co/json/", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    fetch("https://ipapi.co/json/")
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "stlthvape.com";
