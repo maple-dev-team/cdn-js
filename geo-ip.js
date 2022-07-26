@@ -14,7 +14,7 @@ if (self.fetch) {
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "stlthvape.com";
-        switch (response.data.country_code) {
+        switch (response.country_code) {
           case "UA":
             url = "ua.stlthvape.com";
             break;
