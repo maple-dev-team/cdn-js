@@ -4,11 +4,17 @@ if (self.fetch) {
   const isPreview = window.location.href.includes("shopifypreview");
 
   if (!isPreview && !isAdmin && !isRootUrl) {
-    fetch("https://ipapi.co/json/")
+    fetch("https://ipapi.co/json/", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "stlthvape.com";
-        switch (response.data.countryCode) {
+        switch (response.data.country_code) {
           case "UA":
             url = "ua.stlthvape.com";
             break;
