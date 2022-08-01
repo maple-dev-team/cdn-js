@@ -3,8 +3,9 @@ if (self.fetch) {
   const isRootUrl = window.location.href.includes("myshopify.com");
   const isPreview = window.location.href.includes("shopifypreview");
 
+  // Authorization: ApiKey YOUR_API_KEY
   if (!isPreview && !isAdmin && !isRootUrl) {
-    fetch("https://ipapi.co/json/", {
+    fetch("https://geo-ip.appforge.ca/", {
       method: "GET",
       mode: "cors",
       headers: {
@@ -14,7 +15,7 @@ if (self.fetch) {
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "stlthvape.com";
-        switch (response.country_code) {
+        switch (response.country_iso_code) {
           case "UA":
             url = "ua.stlthvape.com";
             break;
