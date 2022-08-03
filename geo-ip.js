@@ -5,7 +5,7 @@ if (self.fetch) {
 
   // Authorization: ApiKey YOUR_API_KEY
   if (!isPreview && !isAdmin && !isRootUrl) {
-    fetch("https://geo-ip.appforge.ca/", {
+    fetch("https://geoip.appforge.ca/country/", {
       method: "GET",
       mode: "cors",
       headers: {
