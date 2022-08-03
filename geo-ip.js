@@ -25,7 +25,7 @@ if (self.fetch) {
         }
         const isTheRightOne = window.location.href.includes(url);
         if (!isTheRightOne) {
-          window.location.href = "https://" + url;
+          window.location.href = url;
         }
       })
       .catch(function (error) {
