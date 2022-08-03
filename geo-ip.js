@@ -14,13 +14,13 @@ if (self.fetch) {
     })
       .then((resp) => resp.json())
       .then(function (response) {
-        let url = "stlthvape.com";
+        let url = "https://stlthvape.com";
         switch (response.country_iso_code) {
           case "UA":
-            url = "ua.stlthvape.com";
+            url = "https://ua.stlthvape.com";
             break;
           case "PE":
-            url = "pe.stlthvape.com";
+            url = "https://pe.stlthvape.com";
             break;
         }
         const isTheRightOne = window.location.href.includes(url);
