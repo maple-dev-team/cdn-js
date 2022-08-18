@@ -22,6 +22,9 @@ if (self.fetch) {
           case "PE":
             url = "https://pe.stlthvape.com";
             break;
+          case "MA":
+            url = "https://ma.stlthvape.com";
+            break;
         }
         const isTheRightOne = window.location.href.includes(url);
         if (!isTheRightOne) {
