@@ -3,8 +3,11 @@ if (self.fetch) {
   const isRootUrl = window.location.href.includes("myshopify.com");
   const isPreview = window.location.href.includes("shopifypreview");
 
+  const previewBar = document.getElementById("preview-bar-iframe")
+  console.log(previewBar);
+
   // Authorization: ApiKey YOUR_API_KEY
-  if (!isPreview && !isAdmin && !isRootUrl) {
+  if (!isPreview && !isAdmin && !isRootUrl && !previewBar) {
     fetch("https://geoip.appforge.ca/country/", {
       method: "GET",
       mode: "cors",
