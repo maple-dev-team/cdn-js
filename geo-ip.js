@@ -1,3 +1,5 @@
+import {LitElement, html} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+
 if (self.fetch) {
   const isAdmin = window.location.href.includes("/admin");
   const isRootUrl = window.location.href.includes("myshopify.com");
