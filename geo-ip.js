@@ -65,7 +65,6 @@ class OneDialog extends LitElement {
         color:white; 
         text-align: center; 
         width:500px; 
-        height:600px; 
         margin:50px; 
         display: flex; 
         flex-direction: column;
@@ -135,7 +134,11 @@ class OneDialog extends LitElement {
         <button class="close" aria-label="Close" @click=${this.close}>✖️</button>
         <div id="content" class="content">
           <div class="main-div">
-            <div style="font-size: 36px;">STLTH</div>
+            <div style="font-size: 36px;">
+              <img width="170" height="43" loading="lazy" alt="STLTH VAPE" src="//cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x.png?v=86172742341548744621644267471" srcset="//cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_320x.png?v=86172742341548744621644267471 320w, 
+                  //cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_600x.png?v=86172742341548744621644267471 600w,
+                  //cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_900x.png?v=86172742341548744621644267471  900w">
+            </div>
             <div class="div-padding">IT SEEMS LIKE YOU ARE SEARCHING FROM</div>
             <div class="div-padding flex-center">
               <slot name="country-content"></slot>
@@ -145,9 +148,9 @@ class OneDialog extends LitElement {
               <a href="#" class="button-stay">
                 NO STAY ON THE CANADA SITE
               </a>
-              <button class="button">
+              <a href="#" class="button">
                 YES, TAKE ME TO THE UA SITE
-              </button>
+              </a>
             </div>
           </div>
         </div>
