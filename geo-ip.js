@@ -2,6 +2,7 @@ import {html, css, LitElement} from 'https://unpkg.com/@polymer/lit-element@late
 const privateOpen = Symbol('open');
 
 class OneDialog extends LitElement {
+
   static get properties() {
     return { 
       open: { type: Boolean, attribute: 'open', reflect: true }
@@ -161,6 +162,10 @@ class OneDialog extends LitElement {
       document.removeEventListener('keydown', this._watchEscape);
     }
   }
+
+  createRenderRoot() {
+    return this;
+  }
   
   close() {
     this.open = false
@@ -181,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var myDiv = document.createElement("div");
   myDiv.id = 'one-dialog-popup';
   myDiv.innerHTML = `
-    <one-dialog close>
+    <one-dialog>
       <span slot="country-content">
         <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine">
         <span style="font-size: 36px;margin-left: 14px;">UKRAINE</span>
