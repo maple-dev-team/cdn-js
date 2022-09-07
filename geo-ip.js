@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           myDiv.innerHTML = `
             <one-dialog>
               <span slot="country-content">
-                <img src="https://flagcdn.com/w40/${response.country_iso_code}.png" alt="${response.country_name}">
+                <img src="https://flagcdn.com/w40/${response.country_iso_code.toLowerCase()}.png" alt="${response.country_name}">
                 <span style="font-size: 36px;margin-left: 14px;">${response.country_name}</span>
               </span>
             </one-dialog>`;
