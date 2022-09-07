@@ -53,8 +53,8 @@ class OneDialog extends LitElement {
         font-size: 14px;
         color:white; 
         text-align: center; 
-        width:500px; 
-        margin:50px; 
+        width:550px; 
+        margin:8px; 
         display: flex; 
         flex-direction: column;
         padding-top: 20px;
@@ -65,7 +65,7 @@ class OneDialog extends LitElement {
       .div-padding-buttons {
           padding-top: 24px;
       }
-      .button {
+      .button-yes {
           padding: 10px 10px;
           font-size: 12px;
           text-transform: uppercase;
@@ -76,7 +76,7 @@ class OneDialog extends LitElement {
           outline: none;
           text-decoration: none;
       }
-      .button:hover {
+      .button-yes:hover {
           background-color: #0329d3;
           box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
           color: #fff;
@@ -134,7 +134,7 @@ class OneDialog extends LitElement {
               <a href="#" class="button-stay">
                 NO STAY ON THE CANADA SITE
               </a>
-              <a href="#" class="button">
+              <a href="#" class="button-yes">
                 YES, TAKE ME TO THE UA SITE
               </a>
             </div>
