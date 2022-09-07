@@ -81,6 +81,10 @@ class OneDialog extends LitElement {
       </div>
     </div>`;
   }
+
+  createRenderRoot() {
+    return this;
+  }
   
   get open() { return this[privateOpen]; }
   set open(isOpen) {
