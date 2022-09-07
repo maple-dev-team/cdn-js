@@ -46,17 +46,6 @@ class OneDialog extends LitElement {
         padding: 1rem;
         position: fixed;
       }
-      button {
-        all: unset;
-        cursor: pointer;
-        font-size: 1.25rem;
-        position: absolute;
-          top: 1rem;
-          right: 1rem;
-      }
-      button:focus {
-        border: 2px solid blue;
-      }
 
       /* Jony css start */
       .main-div {
@@ -131,13 +120,10 @@ class OneDialog extends LitElement {
     <div class="wrapper ${this.open ? 'open' : ''}" aria-hidden="${!this.open}">
       <div class="overlay" @click="${this.close}"></div>
       <div class="dialog" role="dialog" aria-labelledby="title" aria-describedby="content">
-        <button class="close" aria-label="Close" @click=${this.close}>✖️</button>
         <div id="content" class="content">
           <div class="main-div">
             <div style="font-size: 36px;">
-              <img width="170" height="43" loading="lazy" alt="STLTH VAPE" src="//cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x.png?v=86172742341548744621644267471" srcset="//cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_320x.png?v=86172742341548744621644267471 320w, 
-                  //cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_600x.png?v=86172742341548744621644267471 600w,
-                  //cdn.shopify.com/s/files/1/0003/6192/2624/t/73/assets/logo_2x_900x.png?v=86172742341548744621644267471  900w">
+            <img src="https://cdn.shopify.com/s/files/1/0003/6192/2624/files/stlthlogo_white_160x160.png?v=1662582043" alt="" data-mce-src="https://cdn.shopify.com/s/files/1/0003/6192/2624/files/stlthlogo_white_160x160.png?v=1662582043">
             </div>
             <div class="div-padding">IT SEEMS LIKE YOU ARE SEARCHING FROM</div>
             <div class="div-padding flex-center">
