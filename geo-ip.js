@@ -11,8 +11,25 @@ class OneDialog extends LitElement {
   
   static get styles() {
     return [css`
-      :host {
-        color: red;
+      :host .wrapper {
+        opacity: 0;
+        transition: visibility 0s, opacity 0.25s ease-in;
+      }
+      :host .wrapper:not(.open) {
+        visibility: hidden;
+      }
+      :host .wrapper.open {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        opacity: 1;
+        visibility: visible;
       }`];
   }
   
