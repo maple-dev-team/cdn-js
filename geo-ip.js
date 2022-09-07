@@ -11,7 +11,7 @@ class OneDialog extends LitElement {
   
   static get styles() {
     return [css`
-      :root {
+      :host {
         .wrapper {
           opacity: 0;
           transition: visibility 0s, opacity 0.25s ease-in;
