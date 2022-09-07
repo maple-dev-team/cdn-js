@@ -181,13 +181,11 @@ class OneDialog extends LitElement {
 customElements.define('one-dialog', OneDialog);
 
 document.addEventListener("DOMContentLoaded", function(event) {
-
   if (self.fetch) {
-
     const isAdmin = window.location.href.includes("/admin");
     const isRootUrl = window.location.href.includes("myshopify.com");
-    const isPreview = window.location.href.includes("shopifypreview");
-    const previewBar = document.getElementById("preview-bar-iframe"); // some previews don't have myshopify.com or shopifypreview on the url, but have the preview bar added by Shopify
+    const isPreview = false; //window.location.href.includes("shopifypreview");
+    const previewBar = false; //document.getElementById("preview-bar-iframe"); // some previews don't have myshopify.com or shopifypreview on the url, but have the preview bar added by Shopify
 
     // Authorization: ApiKey YOUR_API_KEY
     if (!isPreview && !isAdmin && !isRootUrl && !previewBar) {
