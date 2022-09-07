@@ -1,5 +1,5 @@
-import {html, css, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-import {customElement, property} from 'https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js';
+import {html, css, LitElement} from 'https://cdn.jsdelivr.net/npm/lit-element@3.2.2/index.min.js';
+import {customElement, property} from 'https://cdn.jsdelivr.net/npm/lit-element@3.2.2/decorators.js';
 
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
