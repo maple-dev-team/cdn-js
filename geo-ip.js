@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       })
       .then((resp) => resp.json())
       .then(function (response) {
+        let url = "https://stlthvape.com";
         if(response.continent_code === 'SA'){ // && response.country_iso_code !== 'BR'){
           url = "https://pe.stlthvape.com";
         }
