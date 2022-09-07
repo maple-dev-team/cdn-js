@@ -109,11 +109,13 @@ class OneDialog extends LitElement {
 
 customElements.define('one-dialog', OneDialog);
 
+var myDiv = document.createElement("div");
+myDiv.id = 'one-dialog-popup';
+myDiv.innerHTML = '<one-dialog><span slot="heading">STLTH</span><div>test test testtest</div></one-dialog>';
+document.body.appendChild(myDiv);
+
 document.addEventListener("DOMContentLoaded", function(event) {
-  var myDiv = document.createElement("div");
-  myDiv.id = 'one-dialog-popup';
-  myDiv.innerHTML = '<one-dialog><span slot="heading">STLTH</span><div>test test testtest</div></one-dialog>';
-  document.body.appendChild(myDiv);
+  
   document.querySelector('one-dialog').open = true;
 });
 
