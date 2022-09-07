@@ -108,8 +108,6 @@ class OneDialog extends LitElement {
 }
 
 customElements.define('one-dialog', OneDialog);
-// how to open the dialog
-// 
 
 document.innerHTML+= '<one-dialog><span slot="heading">STLTH</span></one-dialog>'
 
