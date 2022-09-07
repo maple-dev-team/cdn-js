@@ -9,7 +9,9 @@ class OneDialog extends LitElement {
   }
   
   static get styles() {
-    return [css`.wrapper {
+    return [css`
+      .wrapper {
+        font-family: 'Roboto';font-size: 14px;
         opacity: 0;
         transition: visibility 0s, opacity 0.25s ease-in;
       }
@@ -55,6 +57,62 @@ class OneDialog extends LitElement {
       }
       button:focus {
         border: 2px solid blue;
+      }
+      .div-padding {
+          padding-top: 18px;
+      }
+      .div-padding-buttons {
+          padding-top: 24px;
+      }
+
+      .button {
+          padding: 10px 10px;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #000;
+          background-color: #fff;
+          border: none;
+          border-radius: 8px;
+          outline: none;
+          text-decoration: none;
+      }
+
+      .button:hover {
+          background-color: #0329d3;
+          box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
+          color: #fff;
+          xtransform: translateY(-7px);
+      }
+
+      .button-stay {
+          padding: 10px 10px;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #fff;
+          background-color: #000;
+          border: none;
+          border-radius: 8px;
+          outline: none;
+          text-decoration: none;
+      }
+      
+      .button-stay:hover {
+          background-color: #0329d3;
+          box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
+          color: #fff;
+          xtransform: translateY(-7px);
+      }
+
+      .flex-center {
+          display:flex; 
+          flex-direction: row;
+          justify-content: center;
+      }
+
+      .flex-around{
+          display:flex; 
+          flex-direction: row;
+          justify-content: space-around;
       }`];
   }
   
@@ -65,11 +123,28 @@ class OneDialog extends LitElement {
   render() {
     return html`
     <div class="wrapper ${this.open ? 'open' : ''}" aria-hidden="${!this.open}">
-    <div class="overlay" @click="${this.close}"></div>
+      <div class="overlay" @click="${this.close}"></div>
       <div class="dialog" role="dialog" aria-labelledby="title" aria-describedby="content">
         <button class="close" aria-label="Close" @click=${this.close}>✖️</button>
         <h1 id="title"><slot name="heading"></slot></h1>
         <div id="content" class="content">
+          <div style="background-color: black; color:white; text-align: center; width:500px;height:600px; margin:50px; display: flex; flex-direction: column;padding-top: 20px;">
+            <div style="font-size: 36px;">STLTH</div>
+            <div class="div-padding">IT SEEMS LIKE YOU ARE SEARCHING FROM</div>
+            <div class="div-padding flex-center">
+              <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine">
+              <span style="font-size: 36px;margin-left: 14px;">UKRAINE</span>
+            </div>
+            <div class="div-padding">WOULD YOU LIKE TO VISIT THE UA SITE?</div>
+            <div class="div-padding-buttons flex-around">
+              <a href="#" class="button-stay">
+                NO STAY ON THE CANADA SITE
+              </a>
+              <button class="button">
+                YES, TAKE ME TO THE UA SITE
+              </button>
+            </div>
+          </div>
           <slot></slot>
         </div>
       </div>
@@ -95,7 +170,6 @@ class OneDialog extends LitElement {
   }
   
   close() {
-    console.log('close action')
     this.open = false
     const closeEvent = new CustomEvent('dialog-closed');
     this.dispatchEvent(closeEvent);
@@ -110,13 +184,11 @@ class OneDialog extends LitElement {
 
 customElements.define('one-dialog', OneDialog);
 
-var myDiv = document.createElement("div");
-myDiv.id = 'one-dialog-popup';
-myDiv.innerHTML = '<one-dialog><span slot="heading">STLTH</span><div>test test testtest</div></one-dialog>';
-document.body.appendChild(myDiv);
-
 document.addEventListener("DOMContentLoaded", function(event) {
-  
+  var myDiv = document.createElement("div");
+  myDiv.id = 'one-dialog-popup';
+  myDiv.innerHTML = '<one-dialog><span slot="heading">STLTH</span>TEST</one-dialog>';
+  document.body.appendChild(myDiv);
   document.querySelector('one-dialog').open = true;
 });
 
