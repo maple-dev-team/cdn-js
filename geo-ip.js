@@ -11,7 +11,6 @@ class OneDialog extends LitElement {
   static get styles() {
     return [css`
       .wrapper {
-        font-family: 'Roboto';font-size: 14px;
         opacity: 0;
         transition: visibility 0s, opacity 0.25s ease-in;
       }
@@ -42,7 +41,7 @@ class OneDialog extends LitElement {
         width: 100%;
       }
       .dialog {
-        background: #ffffff;
+        background: #000;
         max-width: 600px;
         padding: 1rem;
         position: fixed;
@@ -58,13 +57,26 @@ class OneDialog extends LitElement {
       button:focus {
         border: 2px solid blue;
       }
+
+      /* Jony css start */
+      .main-div {
+        font-family: 'Roboto';
+        font-size: 14px;
+        color:white; 
+        text-align: center; 
+        width:500px; 
+        height:600px; 
+        margin:50px; 
+        display: flex; 
+        flex-direction: column;
+        padding-top: 20px;
+      }
       .div-padding {
           padding-top: 18px;
       }
       .div-padding-buttons {
           padding-top: 24px;
       }
-
       .button {
           padding: 10px 10px;
           font-size: 12px;
@@ -76,14 +88,12 @@ class OneDialog extends LitElement {
           outline: none;
           text-decoration: none;
       }
-
       .button:hover {
           background-color: #0329d3;
           box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
           color: #fff;
           xtransform: translateY(-7px);
       }
-
       .button-stay {
           padding: 10px 10px;
           font-size: 12px;
@@ -95,20 +105,17 @@ class OneDialog extends LitElement {
           outline: none;
           text-decoration: none;
       }
-      
       .button-stay:hover {
           background-color: #0329d3;
           box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
           color: #fff;
           xtransform: translateY(-7px);
       }
-
       .flex-center {
           display:flex; 
           flex-direction: row;
           justify-content: center;
       }
-
       .flex-around{
           display:flex; 
           flex-direction: row;
@@ -126,14 +133,12 @@ class OneDialog extends LitElement {
       <div class="overlay" @click="${this.close}"></div>
       <div class="dialog" role="dialog" aria-labelledby="title" aria-describedby="content">
         <button class="close" aria-label="Close" @click=${this.close}>✖️</button>
-        <h1 id="title"><slot name="heading"></slot></h1>
         <div id="content" class="content">
-          <div style="background-color: black; color:white; text-align: center; width:500px;height:600px; margin:50px; display: flex; flex-direction: column;padding-top: 20px;">
+          <div class="main-div">
             <div style="font-size: 36px;">STLTH</div>
             <div class="div-padding">IT SEEMS LIKE YOU ARE SEARCHING FROM</div>
             <div class="div-padding flex-center">
-              <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine">
-              <span style="font-size: 36px;margin-left: 14px;">UKRAINE</span>
+              <slot name="country-content"></slot>
             </div>
             <div class="div-padding">WOULD YOU LIKE TO VISIT THE UA SITE?</div>
             <div class="div-padding-buttons flex-around">
@@ -145,7 +150,6 @@ class OneDialog extends LitElement {
               </button>
             </div>
           </div>
-          <slot></slot>
         </div>
       </div>
     </div>`;
@@ -187,7 +191,13 @@ customElements.define('one-dialog', OneDialog);
 document.addEventListener("DOMContentLoaded", function(event) {
   var myDiv = document.createElement("div");
   myDiv.id = 'one-dialog-popup';
-  myDiv.innerHTML = '<one-dialog><span slot="heading">STLTH</span>TEST</one-dialog>';
+  myDiv.innerHTML = `
+    <one-dialog>
+      <span slot="country-content">
+        <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine">
+        <span style="font-size: 36px;margin-left: 14px;">UKRAINE</span>
+      </span>
+    </one-dialog>`;
   document.body.appendChild(myDiv);
   document.querySelector('one-dialog').open = true;
 });
