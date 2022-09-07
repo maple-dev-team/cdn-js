@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var myDiv = document.createElement("div");
   myDiv.id = 'one-dialog-popup';
   myDiv.innerHTML = `
-    <one-dialog>
+    <one-dialog close>
       <span slot="country-content">
         <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine">
         <span style="font-size: 36px;margin-left: 14px;">UKRAINE</span>
