@@ -30,6 +30,22 @@ class OneDialog extends LitElement {
           bottom: 0;
         opacity: 1;
         visibility: visible;
+      }
+      :host .overlay {
+        background: rgba(0, 0, 0, 0.8);
+        height: 100%;
+        position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        width: 100%;
+      }
+      :host .dialog {
+        background: #000;
+        max-width: 600px;
+        padding: 1rem;
+        position: fixed;
       }`];
   }
   
