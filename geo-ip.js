@@ -16,7 +16,7 @@ class OneDialog extends LitElement {
     return [
       minireset,
       css`
-      .wrapper {
+        .wrapper {
           opacity: 0;
           transition: visibility 0s, opacity 0.25s ease-in;
         }
@@ -135,13 +135,13 @@ class OneDialog extends LitElement {
             <div class="div-padding flex-center">
               <slot name="country-content"></slot>
             </div>
-            <div class="div-padding">WOULD YOU LIKE TO VISIT THE UA SITE?</div>
+            <div class="div-padding">WOULD YOU LIKE TO VISIT THE <slot name="country-to"></slot> SITE?</div>
             <div class="div-padding-buttons flex-around">
               <a href="#" class="button-stay">
-                NO STAY ON THE CANADA SITE
+                NO STAY ON THE <slot name="country-from"></slot> SITE
               </a>
               <a href="#" class="button-yes">
-                YES, TAKE ME TO THE UA SITE
+                YES, TAKE ME TO THE <slot name="country-to"></slot> SITE
               </a>
             </div>
           </div>
@@ -199,16 +199,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "https://stlthvape.com";
+        let storeName = "CANADA";
+        let currentStoreName = window.location.href.includes('https://stlthvape.com') ? "CANADA" : "UKRAINE";
         if(response.continent_code === 'SA'){ // && response.country_iso_code !== 'BR'){
           url = "https://pe.stlthvape.com";
+          storeName = "PERU";
         }
         else{
           switch (response.country_iso_code) {
             case "UA":
               url = "https://ua.stlthvape.com";
+              storeName = "UKRAINE";
               break;
             case "MA":
               url = "https://ma.stlthvape.com";
+              storeName = "MORROCO";
               break;
           }
         }
@@ -218,8 +223,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           myDiv.id = 'one-dialog-popup';
           myDiv.innerHTML = `
             <one-dialog>
-              <span slot="country-content">
-                <img src="https://flagcdn.com/w40/${response.country_iso_code.toLowerCase()}.png" alt="${response.country_name}">
+              <span slot="country-from">${currentStoreName}</span>
+              <span slot="country-to">${storeName}</span>
+              <span slot="country-content" style="align-items: center; display: flex;">
+                <img src="https://flagcdn.com/w40/${response.country_iso_code.toLowerCase()}.png" alt="${response.country_name}" style="width: 40px; height: 28px;">
                 <span style="font-size: 36px;margin-left: 14px;">${response.country_name}</span>
               </span>
             </one-dialog>`;
