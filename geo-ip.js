@@ -16,16 +16,18 @@ if (self.fetch) {
       .then((resp) => resp.json())
       .then(function (response) {
         let url = "https://stlthvape.com";
-        switch (response.country_iso_code) {
-          case "UA":
-            url = "https://ua.stlthvape.com";
-            break;
-          case "PE":
-            url = "https://pe.stlthvape.com";
-            break;
-          case "MA":
-            url = "https://ma.stlthvape.com";
-            break;
+        if(response.continent_code === 'SA' && response.country_iso_code !== 'BR'){
+          url = "https://pe.stlthvape.com";
+        }
+        else{
+          switch (response.country_iso_code) {
+            case "UA":
+              url = "https://ua.stlthvape.com";
+              break;
+            case "MA":
+              url = "https://ma.stlthvape.com";
+              break;
+          }
         }
         const isTheRightOne = window.location.href.includes(url);
         if (!isTheRightOne) {
