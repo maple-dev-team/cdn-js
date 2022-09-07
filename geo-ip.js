@@ -1,4 +1,4 @@
-import {html, css, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+import {html, css, LitElement} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 const privateOpen = Symbol('open');
 
 class OneDialog extends LitElement {
@@ -95,6 +95,7 @@ class OneDialog extends LitElement {
   }
   
   close() {
+    console.log('close action')
     this.open = false
     const closeEvent = new CustomEvent('dialog-closed');
     this.dispatchEvent(closeEvent);
