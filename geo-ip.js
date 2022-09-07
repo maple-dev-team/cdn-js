@@ -148,11 +148,8 @@ class OneDialog extends LitElement {
   get open() { return this[privateOpen]; }
   set open(isOpen) {
     this[privateOpen] = isOpen;
-    const { shadowRoot } = this;
     const { activeElement } = document;
     if (isOpen) {
-      setTimeout(() => 
-        shadowRoot.querySelector('button').focus());
       if (activeElement) {
         this._wasFocused = activeElement;
       }
