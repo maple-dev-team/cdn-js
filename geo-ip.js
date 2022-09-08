@@ -235,16 +235,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         const isTheRightOne = window.location.href.includes(url);
         if (!isTheRightOne) {
+          var myDiv = document.createElement("div");
+          myDiv.id = 'one-dialog-popup';
+          myDiv.innerHTML = '<one-dialog></one-dialog>';
+          document.body.appendChild(myDiv);
 
           document.querySelector('one-dialog').flag = response.country_iso_code.toLowerCase()
           document.querySelector('one-dialog').countryFrom = currentSiteCountry
           document.querySelector('one-dialog').countryTo = countryTo
           document.querySelector('one-dialog').countryCurrent = response.country_name
-
-          var myDiv = document.createElement("div");
-          myDiv.id = 'one-dialog-popup';
-          myDiv.innerHTML = '<one-dialog></one-dialog>';
-          document.body.appendChild(myDiv);
           document.querySelector('one-dialog').open = true;
         }
       })
