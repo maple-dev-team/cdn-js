@@ -10,6 +10,7 @@ class OneDialog extends LitElement {
     return { 
       open: { type: Boolean, attribute: 'open', reflect: true },
       countryTo: {type: String, attribute: 'countryTo', reflect: true},
+      urlTo: {type: String, attribute: 'urlTo', reflect: true},
       countryFrom: {type: String, attribute: 'countryFrom', reflect: true},
       countryCurrent: {type: String, attribute: 'countryCurrent', reflect: true},
       flag: {type: String, attribute: 'flag', reflect: true},
@@ -144,10 +145,10 @@ class OneDialog extends LitElement {
             </div>
             <div class="div-padding">WOULD YOU LIKE TO VISIT THE ${this.countryTo} SITE?</div>
             <div class="div-padding-buttons flex-around">
-              <a href="#" class="button-stay">
+              <a href="#" class="button-stay" @click="${this.close}">
                 NO STAY ON THE ${this.countryFrom} SITE
               </a>
-              <a href="#" class="button-yes">
+              <a href="${this.urlTo}" class="button-yes">
                 YES, TAKE ME TO THE ${this.countryTo} SITE
               </a>
             </div>
@@ -191,10 +192,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   if (self.fetch) {
     const isAdmin = window.location.href.includes("/admin");
     const isRootUrl = window.location.href.includes("myshopify.com");
-    const isPreview = false; //window.location.href.includes("shopifypreview");
-    const previewBar = false; //document.getElementById("preview-bar-iframe"); // some previews don't have myshopify.com or shopifypreview on the url, but have the preview bar added by Shopify
+    const isPreview = window.location.href.includes("shopifypreview");
+    const previewBar = document.getElementById("preview-bar-iframe"); // some previews don't have myshopify.com or shopifypreview on the url, but have the preview bar added by Shopify
 
-    // Authorization: ApiKey YOUR_API_KEY
     if (!isPreview && !isAdmin && !isRootUrl && !previewBar) {
       fetch("https://geoip.appforge.ca/country/", {
         method: "GET",
@@ -215,25 +215,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
         else if(window.location.href.includes('https://pe.stlthvape.com')){
           currentSiteCountry = 'MORROCO'
         }
-        let url = "https://stlthvape.com";
+        let urlTo = "https://stlthvape.com";
         let countryTo = "CANADA";
-        if(response.continent_code === 'SA'){ // && response.country_iso_code !== 'BR'){
-          url = "https://pe.stlthvape.com";
+        if(response.continent_code === 'SA' && response.country_iso_code !== 'BR'){
+          urlTo = "https://pe.stlthvape.com";
           countryTo = "PERU";
         }
         else{
           switch (response.country_iso_code) {
             case "UA":
-              url = "https://ua.stlthvape.com";
+              urlTo = "https://ua.stlthvape.com";
               countryTo = "UKRAINE";
               break;
             case "MA":
-              url = "https://ma.stlthvape.com";
+              urlTo = "https://ma.stlthvape.com";
               countryTo = "MORROCO";
               break;
           }
         }
-        const isTheRightOne = window.location.href.includes(url);
+        const isTheRightOne = window.location.href.includes(urlTo);
         if (!isTheRightOne) {
           var myDiv = document.createElement("div");
           myDiv.id = 'one-dialog-popup';
@@ -243,7 +243,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           document.querySelector('one-dialog').flag = response.country_iso_code.toLowerCase()
           document.querySelector('one-dialog').countryFrom = currentSiteCountry
           document.querySelector('one-dialog').countryTo = countryTo
-          document.querySelector('one-dialog').countryCurrent = response.country_name
+          document.querySelector('one-dialog').urlTo = urlTo
+          document.querySelector('one-dialog').countryCurrent = response.country_name.toUpperCase()
           document.querySelector('one-dialog').open = true;
         }
       })
