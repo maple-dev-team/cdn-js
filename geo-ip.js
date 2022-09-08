@@ -8,7 +8,11 @@ class OneDialog extends LitElement {
 
   static get properties() {
     return { 
-      open: { type: Boolean, attribute: 'open', reflect: true }
+      open: { type: Boolean, attribute: 'open', reflect: true },
+      countryTo: {type: String, attribute: 'countryTo', reflect: true},
+      countryFrom: {type: String, attribute: 'countryFrom', reflect: true},
+      countryCurrent: {type: String, attribute: 'countryCurrent', reflect: true},
+      flag: {type: String, attribute: 'flag', reflect: true},
     };
   }
   
@@ -133,15 +137,18 @@ class OneDialog extends LitElement {
             </div>
             <div class="div-padding">IT SEEMS LIKE YOU ARE SEARCHING FROM</div>
             <div class="div-padding flex-center">
-              <slot name="country-content"></slot>
+              <span slot="country-content" style="align-items: center; display: flex;">
+                <img src="https://flagcdn.com/w40/${this.flag}.png" alt="${this.countryCurrent}" style="width: 40px; height: 28px;">
+                <span style="font-size: 36px;margin-left: 14px;">${this.countryCurrent}</span>
+              </span>
             </div>
-            <div class="div-padding">WOULD YOU LIKE TO VISIT THE <slot name="country-to"></slot> SITE?</div>
+            <div class="div-padding">WOULD YOU LIKE TO VISIT THE ${this.countryTo} SITE?</div>
             <div class="div-padding-buttons flex-around">
               <a href="#" class="button-stay">
-                NO STAY ON THE <slot name="country-from"></slot> SITE
+                NO STAY ON THE ${this.countryFrom} SITE
               </a>
               <a href="#" class="button-yes">
-                YES, TAKE ME TO THE <slot name="country-to"></slot> SITE
+                YES, TAKE ME TO THE ${this.countryTo} SITE
               </a>
             </div>
           </div>
@@ -198,38 +205,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
       })
       .then((resp) => resp.json())
       .then(function (response) {
+        let currentSiteCountry = 'CANADA'
+        if(window.location.href.includes('https://ua.stlthvape.com')){
+          currentSiteCountry = 'UKRAINE'
+        }
+        else if(window.location.href.includes('https://pe.stlthvape.com')){
+          currentSiteCountry = 'PERU'
+        }
+        else if(window.location.href.includes('https://pe.stlthvape.com')){
+          currentSiteCountry = 'MORROCO'
+        }
         let url = "https://stlthvape.com";
-        let storeName = "CANADA";
-        let currentStoreName = window.location.href.includes('https://stlthvape.com') ? "CANADA" : "UKRAINE";
+        let countryTo = "CANADA";
         if(response.continent_code === 'SA'){ // && response.country_iso_code !== 'BR'){
           url = "https://pe.stlthvape.com";
-          storeName = "PERU";
+          countryTo = "PERU";
         }
         else{
           switch (response.country_iso_code) {
             case "UA":
               url = "https://ua.stlthvape.com";
-              storeName = "UKRAINE";
+              countryTo = "UKRAINE";
               break;
             case "MA":
               url = "https://ma.stlthvape.com";
-              storeName = "MORROCO";
+              countryTo = "MORROCO";
               break;
           }
         }
         const isTheRightOne = window.location.href.includes(url);
         if (!isTheRightOne) {
+
+          document.querySelector('one-dialog').flag = response.country_iso_code.toLowerCase()
+          document.querySelector('one-dialog').countryFrom = currentSiteCountry
+          document.querySelector('one-dialog').countryTo = countryTo
+          document.querySelector('one-dialog').countryCurrent = response.country_name
+
           var myDiv = document.createElement("div");
           myDiv.id = 'one-dialog-popup';
-          myDiv.innerHTML = `
-            <one-dialog>
-              <span slot="country-from">${currentStoreName}</span>
-              <span slot="country-to">${storeName}</span>
-              <span slot="country-content" style="align-items: center; display: flex;">
-                <img src="https://flagcdn.com/w40/${response.country_iso_code.toLowerCase()}.png" alt="${response.country_name}" style="width: 40px; height: 28px;">
-                <span style="font-size: 36px;margin-left: 14px;">${response.country_name}</span>
-              </span>
-            </one-dialog>`;
+          myDiv.innerHTML = '<one-dialog></one-dialog>';
           document.body.appendChild(myDiv);
           document.querySelector('one-dialog').open = true;
         }
