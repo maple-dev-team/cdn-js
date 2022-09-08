@@ -170,7 +170,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
         text-decoration: none;
       }
       .button-yes:hover {
-        background-color: #0329d3;
+        background-color: #ff0000;
         box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
         color: #fff;
         xtransform: translateY(-7px);
@@ -187,7 +187,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
         text-decoration: none;
       }
       .button-stay:hover {
-        background-color: #0329d3;
+        background-color: #ff0000;
         box-shadow: 0px 15px 20px rgba(88, 125, 243, 0.4);
         color: #fff;
         xtransform: translateY(-7px);
