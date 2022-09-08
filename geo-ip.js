@@ -22,8 +22,8 @@ if (self.fetch) {
       else if(window.location.href.includes('https://pe.stlthvape.com')){
         currentSiteCountry = 'PERU'
       }
-      else if(window.location.href.includes('https://pe.stlthvape.com')){
-        currentSiteCountry = 'MORROCO'
+      else if(window.location.href.includes('https://ma.stlthvape.com')){
+        currentSiteCountry = 'MOROCCO'
       }
       let urlTo = "https://stlthvape.com";
       let countryTo = "CANADA";
@@ -39,7 +39,7 @@ if (self.fetch) {
             break;
           case "MA":
             urlTo = "https://ma.stlthvape.com";
-            countryTo = "MORROCO";
+            countryTo = "MOROCCO";
             break;
         }
       }
