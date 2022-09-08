@@ -1,10 +1,11 @@
 if (self.fetch) {
+  const shouldOpen = sessionStorage.getItem("redirect-popup-open") || true;
   const isAdmin = window.location.href.includes("/admin");
   const isRootUrl = window.location.href.includes("myshopify.com");
   const isPreview = window.location.href.includes("shopifypreview");
   const previewBar = document.getElementById("preview-bar-iframe"); // some previews don't have myshopify.com or shopifypreview on the url, but have the preview bar added by Shopify
 
-  if (!isPreview && !isAdmin && !isRootUrl && !previewBar) {
+  if (!isPreview && !isAdmin && !isRootUrl && !previewBar && shouldOpen) {
     fetch("https://geoip.appforge.ca/country/", {
       method: "GET",
       mode: "cors",
@@ -53,7 +54,8 @@ if (self.fetch) {
         document.querySelector('redirect-popup').countryTo = countryTo
         document.querySelector('redirect-popup').urlTo = urlTo
         document.querySelector('redirect-popup').countryCurrent = response.country_name.toUpperCase()
-        document.querySelector('redirect-popup').open = true;
+        document.querySelector('redirect-popup').open = shouldOpen;
+        sessionStorage.setItem("redirect-popup-open", false);
       }
     })
     .catch(function (error) {
