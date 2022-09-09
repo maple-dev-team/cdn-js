@@ -102,7 +102,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
           </div>
         </div>
       </div>
-    `}firstUpdated(){this._watchEscape=this._watchEscape.bind(this)}_close(){this.open=!1,this.dispatchEvent(new CustomEvent("dialog-closed"))}_watchEscape(t){"Escape"===t.key&&this._close()}},t.RedirectPopup.styles=[nt,r`
+    `}firstUpdated(){this._watchEscape=this._watchEscape.bind(this)}_close(){this.open=!1,this.dispatchEvent(new CustomEvent("dialog-closed")),sessionStorage.setItem("redirect-popup-open","close")}_watchEscape(t){"Escape"===t.key&&this._close()}},t.RedirectPopup.styles=[nt,r`
       .wrapper {
         opacity: 0;
         transition: visibility 0s, opacity 0.25s ease-in;

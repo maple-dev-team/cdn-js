@@ -55,7 +55,6 @@ if (self.fetch) {
         document.querySelector('redirect-popup').urlTo = urlTo
         document.querySelector('redirect-popup').countryCurrent = response.country_name.toUpperCase()
         document.querySelector('redirect-popup').open = shouldOpen === 'open';
-        sessionStorage.setItem("redirect-popup-open", 'close');
       }
     })
     .catch(function (error) {
