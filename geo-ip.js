@@ -25,9 +25,12 @@ if (self.fetch) {
       else if(window.location.href.includes('https://ma.stlthvape.com')){
         currentSiteCountry = 'MOROCCO'
       }
+      else if(window.location.href.includes('https://co.stlthvape.com')){
+        currentSiteCountry = 'COLOMBIA'
+      }
       let urlTo = "https://stlthvape.com";
       let countryTo = "CANADA";
-      if(response.continent_code === 'SA' && response.country_iso_code !== 'BR'){
+      if(response.continent_code === 'SA' && response.country_iso_code !== 'BR' && response.country_iso_code !== 'CO'){
         urlTo = "https://pe.stlthvape.com";
         countryTo = "PERU";
       }
@@ -40,6 +43,10 @@ if (self.fetch) {
           case "MA":
             urlTo = "https://ma.stlthvape.com";
             countryTo = "MOROCCO";
+            break;
+          case "CO":
+            urlTo = "https://co.stlthvape.com";
+            countryTo = "COLOMBIA";
             break;
         }
       }
